@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prédiction individuelle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="sidebar-button" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</button>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Diabète App</h3>
+        </div>
+        <a href="{{ url_for('predict') }}" class="nav-button"><i class="fas fa-user-md"></i> Prédiction individuelle</a>
+        <a href="{{ url_for('home') }}" class="nav-button"><i class="fas fa-home"></i> Accueil</a>
+        <a href="{{ url_for('eda') }}" class="nav-button"><i class="fas fa-chart-bar"></i> Analyse exploratoire</a>
+        <a href="{{ url_for('risk') }}" class="nav-button"><i class="fas fa-exclamation-triangle"></i> Risques futurs</a>
+        <div class="sidebar-tips">
+            <h4>Conseils sur le diabète</h4>
+            <ul>
+                <li>Adoptez une alimentation équilibrée, riche en fibres et faible en sucres rapides.</li>
+                <li>Pratiquez une activité physique régulière (30 min/jour, 5 jours/semaine).</li>
+                <li>Surveillez votre glycémie et consultez un médecin régulièrement.</li>
+                <li>Maintenez un poids santé pour réduire les risques.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Prédiction Individuelle du Diabète</h1>
+        <div class="card">
+            <form method="POST" action="{{ url_for('predict') }}">
+                <div class="form-group">
+                    <input type="number" name="pregnancies" id="pregnancies" required placeholder=" ">
+                    <label for="pregnancies">Pregnancies</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="glucose" id="glucose" required placeholder=" ">
+                    <label for="glucose">Glucose</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="blood_pressure" id="blood_pressure" required placeholder=" ">
+                    <label for="blood_pressure">Blood Pressure</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="skin_thickness" id="skin_thickness" required placeholder=" ">
+                    <label for="skin_thickness">Skin Thickness</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="insulin" id="insulin" required placeholder=" ">
+                    <label for="insulin">Insulin</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="bmi" id="bmi" required step="0.1" placeholder=" ">
+                    <label for="bmi">BMI</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="dpf" id="dpf" required step="0.01" placeholder=" ">
+                    <label for="dpf">Diabetes Pedigree Function</label>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="age" id="age" required placeholder=" ">
+                    <label for="age">Age</label>
+                </div>
+                <button type="submit">Prédire</button>
+            </form>
+            {% if prediction %}
+                <h2>Résultat : {{ prediction }}</h2>
+                <p>{{ probability }}</p>
+            {% endif %}
+            {% if error %}
+                <h2>Erreur : {{ error }}</h2>
+            {% endif %}
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+            <p>Institut : AIMS-SENEGAL 2025</p>
+        </div>
+        <div class="footer-right">
+            <p><i class="fas fa-envelope"></i> Email : <a href="mailto:abdou.l.kedjeri@aims-senegal.org">abdou.l.kedjeri@aims-senegal.org</a></p>
+            <p><i class="fab fa-github"></i> GitHub : <a href="https://github.com/Abdou-Latifou">github.com/Abdou-Latifou</a></p>
+        </div>
+    </footer>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

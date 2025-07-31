@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Prédiction du diabète</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <button class="sidebar-button" onclick="toggleSidebar()"><i class="fas fa-bars"></i> Menu</button>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Diabète App</h3>
+        </div>
+        <a href="{{ url_for('predict') }}" class="nav-button"><i class="fas fa-user-md"></i> Prédiction individuelle</a>
+        <a href="{{ url_for('home') }}" class="nav-button"><i class="fas fa-home"></i> Accueil</a>
+        <a href="{{ url_for('eda') }}" class="nav-button"><i class="fas fa-chart-bar"></i> Analyse exploratoire</a>
+        <a href="{{ url_for('risk') }}" class="nav-button"><i class="fas fa-exclamation-triangle"></i> Risques futurs</a>
+        <div class="sidebar-tips">
+            <h4>Conseils sur le diabète</h4>
+            <ul>
+                <li>Adoptez une alimentation équilibrée, riche en fibres et faible en sucres rapides.</li>
+                <li>Pratiquez une activité physique régulière (30 min/jour, 5 jours/semaine).</li>
+                <li>Surveillez votre glycémie et consultez un médecin régulièrement.</li>
+                <li>Maintenez un poids santé pour réduire les risques.</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Prédiction du diabète</h1>
+        <div class="card">
+            <h2>Bienvenue !</h2>
+            <p>Bienvenue dans l'application de prédiction du diabète, une solution avancée pour analyser les données médicales et prédire le risque de diabète avec précision. Développée dans le cadre d'un projet à AIMS-SENEGAL 2025, cette application utilise des techniques de machine learning modernes.</p>
+        </div>
+        <div class="card">
+            <h2>Fonctionnalités de l'application</h2>
+            <ul>
+                <li><strong>Prédiction individuelle</strong> : Entrez les données médicales d'un patient pour obtenir une prédiction immédiate du statut diabétique et une probabilité de risque.</li>
+                <li><strong>Analyse exploratoire</strong> : Découvrez des statistiques détaillées, des distributions, et des corrélations entre les variables médicales.</li>
+                <li><strong>Risques futurs</strong> : Consultez les probabilités de risque pour un ensemble de patients et une analyse SHAP.</li>
+            </ul>
+            <a href="{{ url_for('predict') }}" class="nav-button" style="display: inline-block; margin-top: 20px;">Commencer une prédiction</a>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left">
+            <p>Institut : AIMS-SENEGAL 2025</p>
+        </div>
+        <div class="footer-right">
+            <p><i class="fas fa-envelope"></i> Email : <a href="mailto:abdou.l.kedjeri@aims-senegal.org">abdou.l.kedjeri@aims-senegal.org</a></p>
+            <p><i class="fab fa-github"></i> GitHub : <a href="https://github.com/Abdou-Latifou">github.com/Abdou-Latifou</a></p>
+        </div>
+    </footer>
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
