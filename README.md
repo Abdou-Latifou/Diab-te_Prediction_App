@@ -39,3 +39,4 @@ Web app for diabetes prediction using ML, built with Flask for AIMS-SENEGAL 2025
 - `static/plots/` : Visualisations générées.
 - `templates/` : Modèles HTML pour Flask.
 >>>>>>> 361b852 (Initial commit: Diabetes Prediction App with Flask, ML, and responsive UI)
+# Diab-te_Prediction_App
